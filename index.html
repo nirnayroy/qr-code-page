@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Nirnay, Aarivix</title>
+  <meta name="description" content="Download my contact card or send me your details." />
+
+  <!-- Fonts: served by Google Fonts. Fine on GitHub Pages. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --marine: #0E2A47;
+      --marine-deep: #0A1F36;
+      --paper: #FBF7F0;
+      --ink: #10233B;
+      --amber: #E4572E;
+      --teal: #17B0A6;
+      --hairline: rgba(16, 35, 59, 0.14);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      background:
+        radial-gradient(120% 80% at 50% -10%, #14406b 0%, var(--marine) 42%, var(--marine-deep) 100%);
+      color: var(--paper);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.4) inset,
+        0 24px 60px -18px rgba(6, 18, 32, 0.6);
+    }
+
+    /* --- Header: the "filed card" eyebrow --- */
+    .card__head {
+      padding: 28px 26px 24px;
+      border-bottom: 1px dashed var(--hairline);
+      position: relative;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 18px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--amber);
+    }
+
+    .name {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: clamp(28px, 8vw, 36px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .role {
+      font-size: 13px;
+      color: rgba(16, 35, 59, 0.62);
+      letter-spacing: 0.01em;
+    }
+
+    /* punched hole, top-right — rolodex/index-card cue */
+    .card__head::after {
+      content: "";
+      position: absolute;
+      top: 22px; right: 22px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      border: 1px solid var(--hairline);
+      background: radial-gradient(circle, transparent 55%, rgba(16,35,59,0.05) 56%);
+    }
+
+    /* --- Actions --- */
+    .actions { padding: 18px; display: grid; gap: 12px; }
+
+    .action {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--paper);
+      position: relative;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      outline: none;
+    }
+    .action--pdf  { background: var(--amber); box-shadow: 0 10px 22px -12px rgba(228, 87, 46, 0.9); }
+    .action--form { background: var(--teal);  box-shadow: 0 10px 22px -12px rgba(23, 176, 166, 0.9); }
+
+    .action:hover { transform: translateY(-2px); }
+    .action:active { transform: translateY(0); }
+    .action:focus-visible { box-shadow: 0 0 0 3px var(--paper), 0 0 0 6px var(--ink); }
+
+    .action__icon {
+      flex: none;
+      width: 40px; height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+    .action__icon svg { width: 20px; height: 20px; display: block; }
+
+    .action__text { display: flex; flex-direction: column; gap: 2px; }
+    .action__title {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+    .action__sub {
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .action__arrow {
+      margin-left: auto;
+      flex: none;
+      transition: transform 0.15s ease;
+    }
+    .action:hover .action__arrow { transform: translateX(3px); }
+
+    /* --- Footer --- */
+    .card__foot {
+      padding: 16px 26px 22px;
+      border-top: 1px dashed var(--hairline);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: rgba(16, 35, 59, 0.5);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .action, .action__arrow { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <header class="card__head">
+      <p class="eyebrow">// Contact</p>
+      <!-- EDIT: your name + role -->
+      <h1 class="name">Nirnay</h1>
+      <p class="role">Founder · Aarivix</p>
+    </header>
+
+    <nav class="actions">
+      <!-- EDIT: point href to your PDF filename in the repo -->
+      <a class="action action--pdf" href="contact.pdf" download>
+        <span class="action__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/>
+          </svg>
+        </span>
+        <span class="action__text">
+          <span class="action__title">Download contact card</span>
+          <span class="action__sub">PDF · save my details</span>
+        </span>
+        <svg class="action__arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+
+      <!-- EDIT: paste your Google Form link -->
+      <a class="action action--form" href="https://docs.google.com/forms/d/e/1FAIpQLSfLNxY-QsDL9LB0JZJW8CdngYuWSQCuepSQ0CV6BZpXh0YbuQ/viewform" target="_blank" rel="noopener">
+        <span class="action__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/>
+          </svg>
+        </span>
+        <span class="action__text">
+          <span class="action__title">Send me your details</span>
+          <span class="action__sub">Google Form · takes a minute</span>
+        </span>
+        <svg class="action__arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </nav>
+
+    <footer class="card__foot">
+      <span>Scanned in? Welcome.</span>
+      <span>001</span>
+    </footer>
+  </main>
+</body>
+</html>
